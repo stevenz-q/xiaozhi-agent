@@ -1,0 +1,35 @@
+server:
+  port: 8080
+langchain4j:
+  open-ai:
+    chat-model:
+      base-url: http://langchain4j.dev/demo/openai/v1
+      api-key: demo
+      #api-key: ${OPENAI_API_KEY}
+      model-name: gpt-4o-mini
+      #请求日志和响应日志
+      #log-requests: true
+      #og-responses: true
+#  ollama:
+#    chat-model:
+#      base-url: http://localhost:11434
+#      model-name: deepseek-r1:1.5b
+#      temperature: 0.8
+#      timeout: PT60S
+logging:
+  level:
+    root: info
+spring:
+  data:
+    mongodb:
+      uri: mongodb://localhost:27017/chat_memory_db
+  # 基本数据源配置
+  datasource:
+    url: jdbc:mysql://localhost:3306/guiguxiaozhi?useUnicode=true&characterEncoding=UTF-8&serverTimezone=Asia/Shanghai&useSSL=false
+    username: root
+    password: 1234
+    driver-class-name: com.mysql.cj.jdbc.Driver
+  # 开启 SQL 日志打印
+mybatis-plus:
+  configuration:
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl

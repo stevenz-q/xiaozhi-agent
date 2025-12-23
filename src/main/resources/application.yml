@@ -10,12 +10,22 @@ langchain4j:
       #请求日志和响应日志
       #log-requests: true
       #og-responses: true
-#  ollama:
-#    chat-model:
-#      base-url: http://localhost:11434
-#      model-name: deepseek-r1:1.5b
-#      temperature: 0.8
-#      timeout: PT60S
+  #  ollama:
+  #    chat-model:
+  #      base-url: http://localhost:11434
+  #      model-name: deepseek-r1:1.5b
+  #      temperature: 0.8
+  #      timeout: PT60S
+  #集成阿里通义千问-通用文本向量-v3
+  community:
+    dashscope:
+      chat-model:
+        api-key: ${DASH_SCOPE_API_KEY}
+        model-name: qwen-max
+      # 向量模型
+      embedding-model:
+        api-key: ${DASH_SCOPE_API_KEY}
+        model-name: text-embedding-v3
 logging:
   level:
     root: info

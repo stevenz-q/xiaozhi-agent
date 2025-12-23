@@ -10,22 +10,30 @@ langchain4j:
       #请求日志和响应日志
       #log-requests: true
       #og-responses: true
+    streaming-chat-model:
+      base-url: http://langchain4j.dev/demo/openai/v1
+      api-key: demo
+      model-name: gpt-4o-mini
   #  ollama:
   #    chat-model:
   #      base-url: http://localhost:11434
   #      model-name: deepseek-r1:1.5b
   #      temperature: 0.8
   #      timeout: PT60S
-  #集成阿里通义千问-通用文本向量-v3
   community:
     dashscope:
+      # 集成阿里通义千问
       chat-model:
         api-key: ${DASH_SCOPE_API_KEY}
         model-name: qwen-max
-      # 向量模型
+      # 通用文本向量模型-v3
       embedding-model:
         api-key: ${DASH_SCOPE_API_KEY}
         model-name: text-embedding-v3
+      # 集成阿里通义千问-流式输出
+      streaming-chat-model:
+        api-key: ${DASH_SCOPE_API_KEY}
+        model-name: qwen-max
 logging:
   level:
     root: info

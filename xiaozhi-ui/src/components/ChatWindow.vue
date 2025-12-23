@@ -30,7 +30,7 @@
             ></i>
             <!-- 会话内容 -->
             <span>
-              <span v-html="message.content"></span>
+              <span v-html="renderMarkdown(message.content)"></span>
               <!-- loading -->
               <span
                 class="loading-dots"
@@ -61,6 +61,7 @@
 import { onMounted, ref, watch } from 'vue'
 import axios from 'axios'
 import { v4 as uuidv4 } from 'uuid'
+import { marked } from 'marked'
 
 const messaggListRef = ref()
 const isSending = ref(false)
@@ -162,6 +163,16 @@ const uuidToNumber = (uuid) => {
     number = number * 16 + (parseInt(hexValue, 16) || 0)
   }
   return number % 1000000
+}
+
+// 渲染Markdown内容
+const renderMarkdown = (content) => {
+  if (!content) return ''
+  // 使用marked库解析Markdown
+  return marked.parse(content, { 
+    gfm: true,      // 支持GitHub Flavored Markdown
+    breaks: true    // 支持换行
+  })
 }
 
 // 转换特殊字符

@@ -11,6 +11,8 @@ import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.util.Arrays;
 import java.util.List;
 
@@ -80,9 +82,10 @@ public class EmbeddingTest {
 
         //使用FileSystemDocumentLoader读取指定目录下的知识库文档
         //并使用默认的文档解析器对文档进行解析
-        Document document1 = FileSystemDocumentLoader.loadDocument("C:\\Users\\Smith\\knowledge\\医院信息.md");
-        Document document2 = FileSystemDocumentLoader.loadDocument("C:\\Users\\Smith\\knowledge\\科室信息.md");
-        Document document3 = FileSystemDocumentLoader.loadDocument("C:\\Users\\Smith\\knowledge\\神经内科.md");
+        Path knowledgeDir = Paths.get("knowledge").toAbsolutePath();
+        Document document1 = FileSystemDocumentLoader.loadDocument(knowledgeDir.resolve("医院信息.md").toString());
+        Document document2 = FileSystemDocumentLoader.loadDocument(knowledgeDir.resolve("科室信息.md").toString());
+        Document document3 = FileSystemDocumentLoader.loadDocument(knowledgeDir.resolve("神经内科.md").toString());
         List<Document> documents = Arrays.asList(document1, document2, document3);
 
         //文本向量化并存入向量数据库：将每个片段进行向量化，得到一个嵌入向量

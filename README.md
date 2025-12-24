@@ -4,7 +4,7 @@
 
 ## 技术栈
 
-- 后端：Java 17 + SpringBoot 3 + LangChain4j + MySQL + MongoDB
+- 后端：Java 17 + SpringBoot 3 + LangChain4j + MySQL + MongoDB + Pinecone（向量数据库）
 - 前端：Vue 3 + Vite + Element Plus
 ## 项目功能
 
@@ -17,4 +17,5 @@
 3. 工具调用
    - 集成预约工具，提供了查询预约，并将预约记录持久化到MySQL
 4. RAG
-   - 通过知识库增强AI回答能力，专门针对医疗场景优化，支持医院科室信息检索与咨询服务
+   - 将知识存储到向量库
+   - 通过向量检索增强AI回答能力，专门针对医疗场景优化，支持医院科室信息检索与咨询服务
